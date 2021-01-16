@@ -12,6 +12,11 @@ path = "src/lib.rs"
 [dependencies]
 actix-rt = "1.1.1"
 actix-web = "3.3.2"
+# We need the optional `derive` feature to use `serde`'s procedural macros:
+# `#[derive(Serialize)]` and `#[derive(Deserialize)]`.
+# The feature is not enabled by default to avoid pulling in
+# unnecessary dependencies for projects that do not need it.
+serde = { version = "1", features = ["derive"]}
 
 [dev-dependencies]
 reqwest = "0.10.10"
